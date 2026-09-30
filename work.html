@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jatin Kumar — Architecture & Interior Design</title>
+<meta name="description" content="Portfolio of Jatin Kumar — Architecture, Interior Design and Visualization.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+:root{--bg:#f4f2ed;--ink:#1b1b19;--muted:#77756e;--line:#d9d5cc;--card:#ebe8e0;--accent:#5e6858}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1240px,92%);margin:auto}
+nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;background:rgba(244,242,237,.94);backdrop-filter:blur(10px);z-index:10}
+.logo{font-size:18px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}.navlinks{display:flex;gap:32px;font-size:13px}.navlinks a{color:#4e4c47}.navlinks a:hover{color:#111}
+.hero{min-height:78vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:7%;padding:72px 0 80px}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--muted);margin-bottom:22px}
+h1{font-family:"Playfair Display",serif;font-size:clamp(56px,8vw,112px);line-height:.9;font-weight:500;letter-spacing:-.045em;margin:0 0 30px}
+.hero p{max-width:520px;color:#64615a;font-size:16px;line-height:1.8;margin:0 0 32px}
+.btn{display:inline-flex;border:1px solid var(--ink);padding:13px 20px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:.25s}.btn:hover{background:var(--ink);color:#fff}
+.heroimg{height:590px;overflow:hidden;background:#ddd}.heroimg img{width:100%;height:100%;object-fit:cover}
+.section{padding:100px 0}.sectionhead{display:flex;justify-content:space-between;align-items:end;margin-bottom:38px;border-bottom:1px solid var(--line);padding-bottom:18px}
+.sectionhead h2{font-family:"Playfair Display",serif;font-size:44px;font-weight:500;margin:0}.sectionhead span{font-size:12px;color:var(--muted)}
+.project{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:start}.cover{height:610px;overflow:hidden;background:#ddd;cursor:pointer}.cover img{width:100%;height:100%;object-fit:cover;transition:transform .7s}.cover:hover img{transform:scale(1.025)}
+.projectinfo{padding-top:30px}.projectno{font-size:11px;letter-spacing:.16em;color:var(--muted)}.projectinfo h3{font-family:"Playfair Display",serif;font-size:46px;font-weight:500;margin:15px 0}.projectinfo p{line-height:1.8;color:#66635d;max-width:480px}.meta{border-top:1px solid var(--line);margin-top:35px}.meta div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:13px}.meta span:first-child{color:var(--muted)}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:55px}.gallery figure{margin:0;overflow:hidden;background:#ddd;cursor:pointer}.gallery figure:nth-child(1){grid-column:span 7;height:480px}.gallery figure:nth-child(2){grid-column:span 5;height:480px}.gallery figure:nth-child(3){grid-column:span 5;height:400px}.gallery figure:nth-child(4){grid-column:span 7;height:400px}.gallery figure:nth-child(5){grid-column:span 7;height:480px}.gallery figure:nth-child(6){grid-column:span 5;height:480px}.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.gallery figure:hover img{transform:scale(1.03)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:12%;align-items:start}.about h2{font-family:"Playfair Display",serif;font-size:58px;font-weight:500;line-height:1;margin:0}.about p{color:#66635d;line-height:1.9;margin-top:0}.services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:45px}.service{background:var(--bg);padding:28px}.service b{font-family:"Playfair Display",serif;font-size:24px;font-weight:500}.service p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:0}
+.contact{background:#1d1d1b;color:#f4f2ed;padding:100px 0}.contactgrid{display:grid;grid-template-columns:1fr 1fr;gap:10%}.contact h2{font-family:"Playfair Display",serif;font-size:70px;line-height:.95;font-weight:500;margin:0}.contact p{color:#b9b6ae;line-height:1.8}.contact a{display:block;border-bottom:1px solid #4b4a45;padding:14px 0;color:#eee;font-size:14px}
+footer{background:#1d1d1b;color:#8d8b85;border-top:1px solid #383733;padding:22px 0;font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:space-between}
+.uploadbox{border:1px dashed #aaa79f;padding:28px;margin-top:50px;text-align:center;color:var(--muted);background:#eeece6}.uploadbox input{display:none}.uploadbox label{cursor:pointer;display:inline-block;border:1px solid #777;padding:12px 18px;color:#333;background:#f4f2ed;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.small{font-size:11px;margin-top:12px}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:99;align-items:center;justify-content:center;padding:30px}#lightbox.open{display:flex}#lightbox img{max-width:94vw;max-height:90vh;object-fit:contain}.close{position:absolute;top:20px;right:30px;color:#fff;font-size:30px;cursor:pointer}
+@media(max-width:800px){.navlinks{gap:14px}.hero,.project,.about,.contactgrid{grid-template-columns:1fr}.hero{padding:55px 0}.heroimg{height:55vh}.project{gap:20px}.cover{height:55vh}.gallery{display:grid;grid-template-columns:1fr}.gallery figure:nth-child(n){grid-column:span 1;height:360px}.services{grid-template-columns:1fr}.contact h2{font-size:54px}.section{padding:70px 0}}
+
+/* Portfolio project detail + blurred lightbox */
+.breadcrumb{font-size:10px;letter-spacing:.13em;color:#88847c;margin-bottom:28px}
+.project-detail-head{display:grid;grid-template-columns:1fr 1.1fr;gap:6%;align-items:start}
+.project-copy{padding:30px 0}.project-copy h2{font-family:"Playfair Display",serif;font-size:58px;line-height:1;margin:0 0 28px;font-weight:500;letter-spacing:-.025em}
+.detail-meta{border-top:1px solid var(--line)}
+.detail-meta div{display:grid;grid-template-columns:145px 1fr;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px;gap:12px}
+.detail-meta span{color:var(--muted)}.detail-meta strong{font-weight:500}
+.rule{width:34px;border-top:1px solid var(--ink);margin:32px 0 22px}.project-copy p{max-width:560px;color:#66635d;line-height:1.85;font-size:13px}
+.project-feature{height:520px;position:relative;overflow:hidden;background:#ddd}.project-feature img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}.feature-count{position:absolute;bottom:12px;right:12px;background:rgba(25,25,23,.72);color:#fff;padding:7px 10px;font-size:10px;letter-spacing:.08em}
+.filterbar{display:flex;justify-content:space-between;align-items:center;margin:58px 0 18px;border-bottom:1px solid var(--line);padding-bottom:10px}.filters{display:flex;gap:28px}.filter{border:0;background:transparent;padding:0 0 9px;font:inherit;font-size:10px;letter-spacing:.1em;color:#777;cursor:pointer}.filter.active{color:#171715;border-bottom:2px solid #7a684e}.gallery-note{font-size:10px;color:#88847c;letter-spacing:.1em}
+.portfolio-gallery{margin-top:0;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:28px;gap:16px}
+.portfolio-gallery figure{height:auto!important;margin:0;overflow:hidden;background:#ddd}
+.portfolio-gallery figure img{display:block;width:100%;height:100%;object-fit:cover}
+.portfolio-gallery figure.wide{grid-column:span 6;grid-row:span 15}
+.portfolio-gallery figure.tall{grid-column:span 3;grid-row:span 15}
+.portfolio-gallery figure.large{grid-column:span 6;grid-row:span 18}
+.portfolio-gallery figure:not(.wide):not(.tall):not(.large){grid-column:span 4;grid-row:span 15}
+.portfolio-gallery figure.hidden{display:none}
+#lightbox{display:none;position:fixed;inset:0;z-index:999;align-items:center;justify-content:center;padding:45px;background:rgba(26,24,21,.48);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+#lightbox.open{display:flex}#lightbox img{max-width:min(82vw,1100px);max-height:82vh;width:auto;height:auto;object-fit:contain;box-shadow:0 20px 70px rgba(0,0,0,.28)}
+#lightbox .close{position:absolute;right:30px;top:22px;color:#fff;font-size:34px;font-weight:200;line-height:1;cursor:pointer}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border:1px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-prev{left:28px}.lb-next{right:28px}.lb-index{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);color:#fff;font-size:11px;letter-spacing:.12em}
+@media(max-width:800px){.project-detail-head{grid-template-columns:1fr}.project-feature{height:420px}.project-copy h2{font-size:46px}.filterbar{align-items:start}.filters{gap:15px;flex-wrap:wrap}.portfolio-gallery{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:18px}.portfolio-gallery figure.wide,.portfolio-gallery figure.tall,.portfolio-gallery figure.large,.portfolio-gallery figure:not(.wide):not(.tall):not(.large){grid-column:span 1;grid-row:span 15!important}.lb-arrow{width:38px;height:38px}.lb-prev{left:10px}.lb-next{right:10px}#lightbox{padding:20px}}
+
+#project-02{border-top:1px solid var(--line)}
+#project-02 .project-copy h2{max-width:520px}
+
+.drawing-intro{margin:48px 0 18px;border-top:1px solid var(--line);padding-top:28px}
+.drawing-intro h3{font-family:"Playfair Display",serif;font-size:34px;font-weight:500;margin:8px 0}
+.drawing-intro p{max-width:620px;color:#66635d;font-size:13px;line-height:1.7}
+.drawing-gallery figure{background:#efede7;border:1px solid #ddd8cf;min-height:360px}
+.drawing-card a{display:flex;height:100%;flex-direction:column;color:inherit}
+.drawing-card img{width:100%;height:280px;object-fit:contain;background:#f7f5f0;padding:14px;box-sizing:border-box}
+.drawing-card figcaption{padding:15px 17px 18px;display:flex;flex-direction:column;gap:6px}
+.drawing-card figcaption span{font-size:9px;letter-spacing:.11em;color:#8a857c}
+.drawing-card figcaption strong{font-family:"Playfair Display",serif;font-size:20px;font-weight:500}
+.drawing-card figcaption em{font-style:normal;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-top:5px}
+@media(max-width:800px){.drawing-gallery{grid-template-columns:1fr 1fr}.drawing-gallery figure{grid-column:span 1!important;grid-row:span 15!important}.drawing-card img{height:220px}}
+
+/* Mobile navigation + responsive portfolio layout */
+@media (max-width: 700px){
+  html{overflow-x:hidden}
+  body{overflow-x:hidden}
+  .wrap{width:calc(100% - 32px);max-width:none}
+
+  nav{
+    width:calc(100% - 32px);
+    padding:18px 0;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  nav .links{
+    width:100%;
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding-bottom:3px;
+  }
+  nav .links::-webkit-scrollbar{display:none}
+  nav .links a{white-space:nowrap;font-size:10px}
+
+  .hero{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:28px!important;
+    padding-top:42px!important;
+  }
+  .hero h1{font-size:48px!important;line-height:1.02!important}
+  .hero p{font-size:13px!important;max-width:100%!important}
+  .heroimg{width:100%!important;height:58vh!important;min-height:360px!important}
+  .heroimg img{width:100%;height:100%;object-fit:cover}
+
+  .section{padding:64px 0!important}
+  .sectionhead{display:flex;align-items:flex-end;gap:12px}
+  .sectionhead h2{font-size:30px!important}
+  .sectionhead span{font-size:9px}
+
+  .home-projects{grid-template-columns:1fr!important;gap:28px!important}
+  .home-project-image{height:390px!important}
+  .home-project-info{padding:20px!important}
+  .home-project-info h3{font-size:28px!important}
+
+  .about{grid-template-columns:1fr!important;gap:28px!important}
+  .services{grid-template-columns:1fr!important}
+  .meta>div{grid-template-columns:1fr!important;gap:6px!important}
+  .meta strong{font-size:15px!important}
+
+  .contactgrid{grid-template-columns:1fr!important;gap:34px!important}
+  .contact h2{font-size:42px!important}
+  footer{flex-direction:column!important;gap:8px!important;align-items:flex-start!important}
+
+  /* Work page */
+  .project-detail-head{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:28px!important;
+  }
+  .project-copy h2{font-size:40px!important}
+  .detail-meta{grid-template-columns:1fr!important;gap:12px!important}
+  .project-feature{width:100%!important;height:60vh!important;min-height:360px!important}
+  .project-feature img{width:100%;height:100%;object-fit:cover}
+
+  .filterbar{
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .filterbar::-webkit-scrollbar{display:none}
+  .filters{display:flex!important;flex-wrap:nowrap!important;width:max-content!important}
+  .filter{white-space:nowrap!important}
+
+  .portfolio-gallery{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-auto-rows:auto!important;
+    gap:12px!important;
+  }
+  .portfolio-gallery figure,
+  .portfolio-gallery figure.wide,
+  .portfolio-gallery figure.tall,
+  .portfolio-gallery figure.large{
+    grid-column:1!important;
+    grid-row:auto!important;
+    height:360px!important;
+    min-height:0!important;
+  }
+  .portfolio-gallery figure img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+  }
+
+  .drawing-intro{margin-top:36px!important}
+  .drawing-gallery{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+  .drawing-gallery figure{
+    height:auto!important;
+    min-height:0!important;
+  }
+  .drawing-card img{
+    width:100%!important;
+    height:260px!important;
+    object-fit:contain!important;
+  }
+
+  .lightbox{padding:14px!important}
+  .lightbox img{max-width:96vw!important;max-height:82vh!important}
+  .lb-arrow{width:40px!important;height:40px!important}
+  .lb-prev{left:10px!important}
+  .lb-next{right:10px!important}
+  .close{top:12px!important;right:16px!important}
+
+  .project2-gallery,
+  .drawing-gallery{width:100%!important}
+}
+
+/* Very small phones */
+@media (max-width:390px){
+  .wrap{width:calc(100% - 24px)}
+  nav{width:calc(100% - 24px)}
+  .hero h1{font-size:42px!important}
+  .heroimg{height:52vh!important;min-height:300px!important}
+  .home-project-image{height:320px!important}
+  .project-feature{height:52vh!important;min-height:300px!important}
+  .portfolio-gallery figure,
+  .portfolio-gallery figure.wide,
+  .portfolio-gallery figure.tall,
+  .portfolio-gallery figure.large{height:300px!important}
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="logo" href="#">Jatin Kumar</a><div class="navlinks"><a href="./work.html">Work</a><a href="index.html#about">About</a><a href="index.html#experience">Experience</a><a href="index.html#contact">Contact</a></div></nav>
+<main>
+<section id="work" class="section wrap">
+<div class="breadcrumb">HOME &nbsp; / &nbsp; PROJECTS &nbsp; / &nbsp; KANKARBAGH, PATNA</div>
+
+<div class="project-detail-head">
+  <div class="project-copy">
+    <div class="eyebrow">PROJECT 01</div>
+    <h2>Kankarbagh, Patna</h2>
+    <div class="detail-meta">
+      <div><span>Status</span><strong>Currently Ongoing</strong></div>
+      <div><span>Location</span><strong>Kankarbagh, Patna</strong></div>
+      <div><span>Type</span><strong>Residential Interior</strong></div>
+      <div><span>Scope of Work</span><strong>Space Planning, Design, Plumbing, Ceiling</strong></div>
+      <div><span>Year</span><strong>2025</strong></div>
+    </div>
+    <div class="rule"></div>
+    <p>A contemporary residential interior project in Kankarbagh, Patna, developed around a calm neutral palette, warm timber, muted greens and carefully composed detailing. The work focuses on spatial planning, interior design, plumbing coordination and ceiling development.</p>
+  </div>
+
+  <div class="project-feature">
+    <img src="./assets/project-01-kankarbagh/project-01-3.png" alt="Kankarbagh Patna living room" data-lightbox>
+    <div class="feature-count">MAIN VIEW</div>
+  </div>
+</div>
+
+<div class="filterbar">
+  <div class="filters">
+    <button class="filter project1-filter active" data-filter="living">LIVING</button>
+    <button class="filter project1-filter" data-filter="bedroom">BEDROOM</button>
+    <button class="filter project1-filter" data-filter="bathroom">BATHROOM</button>
+    <button class="filter project1-filter" data-filter="details">DETAILS</button>
+    <button class="filter project1-filter" data-filter="2d">2D WORK</button>
+  </div>
+</div>
+
+<div class="gallery portfolio-gallery project1-gallery">
+  <!-- LIVING: project-01-3 is the featured/main image and is intentionally not repeated here -->
+  <figure class="wide" data-category="living"><img src="./assets/project-01-kankarbagh/project-01-4.png" alt="Kankarbagh living room alternate view" data-lightbox></figure>
+  <figure class="wide" data-category="living"><img src="./assets/project-01-kankarbagh/project-01-5.png" alt="Kankarbagh living room top view" data-lightbox></figure>
+
+  <!-- BEDROOM -->
+  <figure class="tall" data-category="bedroom"><img src="./assets/project-01-kankarbagh/project-01-2.png" alt="Kankarbagh bedroom interior" data-lightbox></figure>
+  <figure class="wide" data-category="bedroom"><img src="./assets/project-01-kankarbagh/project-01-6.png" alt="Kankarbagh bedroom interior" data-lightbox></figure>
+
+  <!-- BATHROOM -->
+  <figure data-category="bathroom"><img src="./assets/project-01-kankarbagh/project-01-7.png" alt="Kankarbagh bathroom interior" data-lightbox></figure>
+  <figure data-category="bathroom"><img src="./assets/project-01-kankarbagh/project-01-8.jpg" alt="Kankarbagh bathroom interior" data-lightbox></figure>
+  <figure data-category="bathroom"><img src="./assets/project-01-kankarbagh/project-01-10.png" alt="Kankarbagh bathroom detail" data-lightbox></figure>
+  <figure data-category="bathroom"><img src="./assets/project-01-kankarbagh/project-01-11.png" alt="Kankarbagh bathroom interior" data-lightbox></figure>
+  <figure data-category="bathroom"><img src="./assets/project-01-kankarbagh/project-01-12.png" alt="Kankarbagh bathroom interior" data-lightbox></figure>
+
+  <!-- DETAILS -->
+  <figure class="tall" data-category="details"><img src="./assets/project-01-kankarbagh/project-01-1.png" alt="Kankarbagh work area" data-lightbox></figure>
+  <figure class="wide" data-category="details"><img src="./assets/project-01-kankarbagh/project-01-9.jpg" alt="Kankarbagh dressing detail" data-lightbox></figure>
+</div>
+<div class="drawing-intro project1-drawing-intro">
+  <div class="eyebrow">2D WORK</div>
+  <h3>Selected Technical Drawings</h3>
+  <p>A concise selection of technical drawings from the Kankarbagh residence, focused on planning, elevations and furniture detailing.</p>
+</div>
+<div class="gallery portfolio-gallery drawing-gallery project1-drawing-gallery">
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-01-kankarbagh/2d-work/01-bedroom-3-plan-elevations.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-01-kankarbagh/2d-work/01-bedroom-3-plan-elevations.jpg" alt="Bedroom 3 — Plan & Elevations">
+    <figcaption><span>2D WORK · PLAN & ELEVATIONS</span><strong>Bedroom 3 — Plan & Elevations</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-01-kankarbagh/2d-work/02-bedroom-2-plan-elevations.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-01-kankarbagh/2d-work/02-bedroom-2-plan-elevations.jpg" alt="Bedroom 2 — Plan & Elevations">
+    <figcaption><span>2D WORK · PLAN & ELEVATIONS</span><strong>Bedroom 2 — Plan & Elevations</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-01-kankarbagh/2d-work/03-dressing-unit-detail.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-01-kankarbagh/2d-work/03-dressing-unit-detail.jpg" alt="Dressing Unit — Detail">
+    <figcaption><span>2D WORK · FURNITURE DETAIL</span><strong>Dressing Unit — Detail</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-01-kankarbagh/2d-work/04-living-room-elevations.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-01-kankarbagh/2d-work/04-living-room-elevations.jpg" alt="Living Room — Elevations">
+    <figcaption><span>2D WORK · ELEVATIONS</span><strong>Living Room — Elevations</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-01-kankarbagh/2d-work/05-bedroom-6-tv-wall.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-01-kankarbagh/2d-work/05-bedroom-6-tv-wall.jpg" alt="Bedroom 6 — TV Wall Elevation">
+    <figcaption><span>2D WORK · ELEVATION</span><strong>Bedroom 6 — TV Wall Elevation</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-01-kankarbagh/2d-work/06-mandir-elevation.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-01-kankarbagh/2d-work/06-mandir-elevation.jpg" alt="Mandir — Elevation & Details">
+    <figcaption><span>2D WORK · DETAIL</span><strong>Mandir — Elevation & Details</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+</div>
+</div>
+</section>
+
+
+
+<section id="project-02" class="section wrap">
+<div class="breadcrumb">HOME &nbsp; / &nbsp; PROJECTS &nbsp; / &nbsp; OFFICE, FATUA BIHAR</div>
+
+<div class="project-detail-head">
+  <div class="project-copy">
+    <div class="eyebrow">PROJECT 02</div>
+    <h2>Office, Fatua Bihar</h2>
+    <div class="detail-meta">
+      <div><span>Location</span><strong>Fatua, Bihar</strong></div>
+      <div><span>Type</span><strong>Office Interior</strong></div>
+      <div><span>Project</span><strong>Commercial Workspace</strong></div>
+    </div>
+    <div class="rule"></div>
+    <p>An office interior project in Fatua, Bihar, designed around a practical workplace environment with organized workstations, meeting areas, storage, display elements and a focused corporate identity.</p>
+  </div>
+
+  <div class="project-feature">
+    <img src="./assets/project-02-fatua-office/project-02-2.png" alt="Fatua Bihar office interior" data-lightbox>
+    <div class="feature-count">MAIN VIEW</div>
+  </div>
+</div>
+
+<div class="filterbar">
+  <div class="filters">
+    <button class="filter project2-filter active" data-filter="workstation">WORKSTATION</button>
+    <button class="filter project2-filter" data-filter="meeting">MEETING</button>
+    <button class="filter project2-filter" data-filter="reception">RECEPTION</button>
+    <button class="filter project2-filter" data-filter="details">DETAILS</button>
+    <button class="filter project2-filter" data-filter="2d">2D WORK</button>
+  </div>
+</div>
+
+<div class="gallery portfolio-gallery project2-gallery">
+  <figure class="tall" data-category="details"><img src="./assets/project-02-fatua-office/project-02-1.png" alt="Office pantry and storage" data-lightbox></figure>
+  <figure class="tall" data-category="meeting"><img src="./assets/project-02-fatua-office/project-02-3.png" alt="Meeting area" data-lightbox></figure>
+  <figure class="wide" data-category="reception"><img src="./assets/project-02-fatua-office/project-02-4.png" alt="Office branding wall and workstations" data-lightbox></figure>
+  <figure class="wide" data-category="workstation"><img src="./assets/project-02-fatua-office/project-02-5.png" alt="Workstations with factory view" data-lightbox></figure>
+  <figure class="wide" data-category="workstation"><img src="./assets/project-02-fatua-office/project-02-6.png" alt="Side workstation area" data-lightbox></figure>
+  <figure class="large" data-category="workstation"><img src="./assets/project-02-fatua-office/project-02-7.png" alt="Central office workspace" data-lightbox></figure>
+  <figure data-category="reception"><img src="./assets/project-02-fatua-office/project-02-8.png" alt="RSPL reception and seating" data-lightbox></figure>
+  <figure data-category="workstation"><img src="./assets/project-02-fatua-office/project-02-9.png" alt="Office workstation detail" data-lightbox></figure>
+  <figure data-category="details"><img src="./assets/project-02-fatua-office/project-02-10.png" alt="Office storage and workstation detail" data-lightbox></figure>
+</div>
+
+<div class="drawing-intro">
+  <div class="eyebrow">2D WORK</div>
+  <h3>Technical Drawings</h3>
+  <p>A curated selection of technical drawings developed for the Fatua office project, showing space planning, coordination and detailed interior design development.</p>
+</div>
+<div class="gallery portfolio-gallery drawing-gallery">
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-02-fatua-office/2d-work/08-factory-office-floor-model.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-02-fatua-office/2d-work/08-factory-office-floor-model.jpg" alt="Factory Office Floor Model">
+    <figcaption><span>2D WORK · FLOOR PLAN</span><strong>Factory Office Floor Model</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-02-fatua-office/2d-work/03-factory-office-1-29-11-model.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-02-fatua-office/2d-work/03-factory-office-1-29-11-model.jpg" alt="Factory Office 1 29 11 Model">
+    <figcaption><span>2D WORK · SPACE PLANNING</span><strong>Factory Office 1 29 11 Model</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-02-fatua-office/2d-work/12-factory-office1-ceiling-light-model.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-02-fatua-office/2d-work/12-factory-office1-ceiling-light-model.jpg" alt="Factory Office1 Ceiling Light Model">
+    <figcaption><span>2D WORK · CEILING & LIGHTING</span><strong>Factory Office1 Ceiling Light Model</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-02-fatua-office/2d-work/10-factory-office-plumbing-model.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-02-fatua-office/2d-work/10-factory-office-plumbing-model.jpg" alt="Factory Office Plumbing Model">
+    <figcaption><span>2D WORK · PLUMBING</span><strong>Factory Office Plumbing Model</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-02-fatua-office/2d-work/01-director-s-cabin-1.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-02-fatua-office/2d-work/01-director-s-cabin-1.jpg" alt="Director S Cabin 1">
+    <figcaption><span>2D WORK · DIRECTOR'S CABIN</span><strong>Director S Cabin 1</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-02-fatua-office/2d-work/17-manager-s-cabin.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-02-fatua-office/2d-work/17-manager-s-cabin.jpg" alt="Manager S Cabin">
+    <figcaption><span>2D WORK · MANAGER'S CABIN</span><strong>Manager S Cabin</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+<figure class="drawing-card" data-category="2d">
+  <a href="./assets/project-02-fatua-office/2d-work/09-factory-office-pantry-1-model.jpg" target="_blank" rel="noopener">
+    <img src="./assets/project-02-fatua-office/2d-work/09-factory-office-pantry-1-model.jpg" alt="Factory Office Pantry 1 Model">
+    <figcaption><span>2D WORK · PANTRY</span><strong>Factory Office Pantry 1 Model</strong><em>View drawing ↗</em></figcaption>
+  </a>
+</figure>
+</div>
+</section>
+
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="close" aria-label="Close">×</button>
+  <button class="lb-arrow lb-prev" aria-label="Previous">‹</button>
+  <img id="lightboxImg" alt="">
+  <button class="lb-arrow lb-next" aria-label="Next">›</button>
+  <div class="lb-index">01 / 01</div>
+</div>
+</main>
+
+<footer><span>© 2026 Jatin Kumar</span><span>Interior Designer · Gurgaon, India</span></footer>
+<script>
+const lb=document.getElementById('lightbox');
+const li=document.getElementById('lightboxImg');
+let current=0;
+let visibleImages=[];
+
+function getVisibleImages(){
+  return [...document.querySelectorAll('.portfolio-gallery img[data-lightbox]')]
+    .filter(img => !img.closest('figure')?.classList.contains('hidden'));
+}
+function openLightbox(img){
+  if(!lb || !li) return;
+  visibleImages=getVisibleImages();
+  current=Math.max(0,visibleImages.indexOf(img));
+  if(!visibleImages.length) return;
+  li.src=visibleImages[current].src;
+  li.alt=visibleImages[current].alt;
+  lb.classList.add('open');
+  updateIndex();
+}
+function updateIndex(){
+  const el=document.querySelector('.lb-index');
+  if(el) el.textContent=String(current+1).padStart(2,'0')+' / '+String(visibleImages.length).padStart(2,'0');
+}
+function moveLightbox(step){
+  if(!visibleImages.length) visibleImages=getVisibleImages();
+  if(!visibleImages.length || !li) return;
+  current=(current+step+visibleImages.length)%visibleImages.length;
+  li.src=visibleImages[current].src;
+  li.alt=visibleImages[current].alt;
+  updateIndex();
+}
+
+document.querySelectorAll('.portfolio-gallery img[data-lightbox]').forEach(img=>{
+  img.addEventListener('click',()=>openLightbox(img));
+});
+
+const closeBtn=document.querySelector('.close');
+const prevBtn=document.querySelector('.lb-prev');
+const nextBtn=document.querySelector('.lb-next');
+
+if(closeBtn && lb) closeBtn.addEventListener('click',()=>lb.classList.remove('open'));
+if(prevBtn) prevBtn.addEventListener('click',e=>{e.stopPropagation();moveLightbox(-1)});
+if(nextBtn) nextBtn.addEventListener('click',e=>{e.stopPropagation();moveLightbox(1)});
+if(lb) lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+
+document.addEventListener('keydown',e=>{
+  if(!lb || !lb.classList.contains('open')) return;
+  if(e.key==='Escape') lb.classList.remove('open');
+  if(e.key==='ArrowLeft') moveLightbox(-1);
+  if(e.key==='ArrowRight') moveLightbox(1);
+});
+
+function setupFilters(sectionSelector, filterSelector, gallerySelector, defaultCategory){
+  const section=document.querySelector(sectionSelector);
+  if(!section) return;
+  const buttons=section.querySelectorAll(filterSelector);
+  const figures=section.querySelectorAll(gallerySelector+' figure');
+  function apply(category){
+    buttons.forEach(b=>b.classList.toggle('active',b.dataset.filter===category));
+    figures.forEach(fig=>fig.classList.toggle('hidden',fig.dataset.category!==category));
+  }
+  buttons.forEach(button=>button.addEventListener('click',()=>apply(button.dataset.filter)));
+  apply(defaultCategory);
+}
+
+const p1=document.querySelector('#work');
+if(p1){
+  const buttons=p1.querySelectorAll('.project1-filter');
+  const renders=p1.querySelectorAll('.project1-gallery figure');
+  const drawings=p1.querySelectorAll('.project1-drawing-gallery figure');
+  const intro=p1.querySelector('.project1-drawing-intro');
+  function applyP1(category){
+    buttons.forEach(b=>b.classList.toggle('active',b.dataset.filter===category));
+    const is2d=category==='2d';
+    renders.forEach(fig=>fig.classList.toggle('hidden',is2d || fig.dataset.category!==category));
+    drawings.forEach(fig=>fig.classList.toggle('hidden',!is2d));
+    if(intro) intro.classList.toggle('hidden',!is2d);
+  }
+  buttons.forEach(b=>b.addEventListener('click',()=>applyP1(b.dataset.filter)));
+  if(buttons.length) applyP1(buttons[0].dataset.filter);
+}
+
+const p2=document.querySelector('#project-02');
+if(p2){
+  const buttons=p2.querySelectorAll('.project2-filter');
+  const renders=p2.querySelectorAll('.project2-gallery figure');
+  const drawings=p2.querySelectorAll('.drawing-gallery figure');
+  function applyP2(category){
+    buttons.forEach(b=>b.classList.toggle('active',b.dataset.filter===category));
+    const is2d=category==='2d';
+    renders.forEach(fig=>fig.classList.toggle('hidden',is2d || fig.dataset.category!==category));
+    drawings.forEach(fig=>fig.classList.toggle('hidden',!is2d));
+  }
+  buttons.forEach(b=>b.addEventListener('click',()=>applyP2(b.dataset.filter)));
+  if(buttons.length) applyP2(buttons[0].dataset.filter);
+}
+</script>
+</body></html>
